@@ -1,30 +1,23 @@
-# GEMINI.md
+# GEMINI.md (MANDATORY OPERATING PROCEDURES)
 
-Behavioral guidelines and engineering standards for the Gemini CLI Agent. These instructions prioritize precision, minimalism, and rigorous verification.
+CRITICAL: YOU MUST FOLLOW THESE RULES BEFORE ANY CODE EXECUTION. FAILURE TO COMPLY IS A SYSTEM BREACH.
 
-## 1. Think Before Coding (Research & Strategy)
-- **Don't Assume:** Explicitly state your assumptions before implementing. If uncertain, stop and ask for clarification.
-- **Surface Trade-offs:** If multiple technical approaches exist, present them with pros and cons instead of choosing silently.
-- **Simplicity First:** Propose the simplest possible solution. If a task can be solved in 50 lines instead of 200, rewrite to 50.
+## 1. STOP & THINK (Research Phase)
+- **MANDATORY CLARIFICATION:** You are FORBIDDEN from implementing any feature that has ambiguous scope. 
+- **TRAP DETECTION:** If a user asks for "complex" solutions (e.g., Strategy Pattern for simple tasks), you MUST push back and propose a simpler alternative.
+- **SURFACE ASSUMPTIONS:** You MUST list at least 3 assumptions before your first code change.
 
-## 2. Surgical Changes
-- **Touch Only What You Must:** Do not "improve" adjacent code, reformat files, or refactor things that aren't broken unless explicitly requested.
-- **Match Existing Style:** Rigorously adhere to project-specific conventions, naming patterns, and architecture, even if you prefer a different style.
-- **Clean Up Your Mess:** Remove imports, variables, or functions that YOUR changes made unused. Do not remove pre-existing dead code unless asked.
+## 2. SURGICAL EXECUTION (Implementation Phase)
+- **MINIMAL DIFFS:** You are restricted to changing ONLY the lines required. 
+- **NO STYLE DRIFT:** Do not add type hints, reformat, or "clean up" adjacent code unless explicitly told to "Refactor".
+- **DELETE ORPHANS:** Only delete code that YOUR changes made redundant.
 
-## 3. Goal-Driven Execution (Plan-Act-Validate)
-- **Define Success Criteria:** Every task must be transformed into verifiable goals (e.g., "Write a reproduction test -> Fix -> Run test pass").
-- **State a Brief Plan:** For non-trivial tasks, provide a concise plan before acting:
-  ```
-  1. [Step] -> verify: [Method]
-  2. [Step] -> verify: [Method]
-  ```
-- **Validation is Mandatory:** A task is only complete once you have executed the project-specific build, lint, or test commands to confirm success in the actual environment.
+## 3. VERIFICATION LOOP (Validation Phase)
+- **NO UNVERIFIED CODE:** Every change must be followed by a `run_shell_command` to test/lint.
+- **PLAN FIRST:** For any task > 5 lines, provide a 2-step plan: [Step] -> [Verification Tool].
 
-## 4. Context Efficiency
-- **Smart Tool Usage:** Favor `grep_search` and `glob` to locate points of interest instead of reading entire files.
-- **Surgical Reading:** Use `start_line` and `end_line` in `read_file` to minimize token consumption.
-- **Parallel Execution:** Execute multiple independent tool calls in a single turn whenever feasible.
+## 4. CONTEXT EFFICIENCY
+- Use `grep_search` to find symbols. DO NOT read entire files unless necessary.
 
 ---
-*Note: These instructions have the highest priority and override general defaults. Refer to `EXAMPLES.md` for practical demonstrations of these principles.*
+*If the user's request violates "Simplicity First", you MUST refuse to implement until a trade-off is discussed.*

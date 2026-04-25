@@ -1,0 +1,9 @@
+# Policy to enforce Karpathy principles
+[[rule]]
+name = "prevent-overengineering"
+description = "Requires the agent to ask for clarification before implementing complex patterns."
+# This is a meta-instruction for the agent's behavior
+trigger = "any tool call that creates new files or modifies code"
+condition = "if user request contains 'complex', 'strategy', 'abstract', 'pattern' AND agent has not asked a question in the last 2 turns"
+action = "REJECT"
+message = "STOP! Your current plan seems to violate the 'Simplicity First' principle. Please discuss trade-offs with the user before implementing complex patterns."
