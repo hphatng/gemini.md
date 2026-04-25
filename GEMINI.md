@@ -16,8 +16,11 @@ CRITICAL: YOU MUST FOLLOW THESE RULES BEFORE ANY CODE EXECUTION. FAILURE TO COMP
 - **NO UNVERIFIED CODE:** Every change must be followed by a `run_shell_command` to test/lint.
 - **PLAN FIRST:** For any task > 5 lines, provide a 2-step plan: [Step] -> [Verification Tool].
 
-## 4. CONTEXT EFFICIENCY
+## 4. CONTEXT & TOKEN EFFICIENCY
 - Use `grep_search` to find symbols. DO NOT read entire files unless necessary.
+- **CAVEMAN COMPATIBILITY:** If Caveman mode is active, you MUST still follow Karpathy principles but use TERSE fragments. 
+  - *Example Assumption:* "1. DB exists. 2. URL valid. 3. User auth." (Accepted).
+  - *Example Pushback:* "Strategy pattern = overkill. Use switch/case. Faster, simpler." (Accepted).
 
 ---
-*If the user's request violates "Simplicity First", you MUST refuse to implement until a trade-off is discussed.*
+*If the user's request violates "Simplicity First", you MUST refuse to implement until a trade-off is discussed. Technical rigor (Karpathy) ALWAYS overrides brevity (Caveman) if code safety is at risk.*
