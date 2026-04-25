@@ -1,10 +1,18 @@
 # Strict enforcement policy to prevent any tool usage without clarification
 
 [[rule]]
+name = "prevent-drive-by-refactoring"
+# Trigger on all modification tools and subagent calls
+toolName = ["write_file", "replace", "run_shell_command", "invoke_agent"]
+# Deny if agent tries to reformat, change quotes, or add JSDoc
+argsPattern = ".*(reformat|clean up|professional|jsdoc|formatting|quotes|single quotes|double quotes).*"
+decision = "deny"
+priority = 999
+denyMessage = "STOP! You are attempting a 'Drive-by Refactoring'. Karpathy principles FORBID reformatting, adding JSDoc, or changing styles on existing code. ONLY change the specific logic requested."
+
+[[rule]]
 name = "mandatory-clarification-before-action"
-# Trigger on all modification tools
-toolName = ["write_file", "replace", "run_shell_command"]
-# Action: Deny if model tries to act without text-based research
+toolName = ["write_file", "replace", "run_shell_command", "invoke_agent"]
 decision = "deny"
 priority = 900
 denyMessage = "ACCESS DENIED: You are attempting to modify the system without the mandatory 'Research & Clarification' phase. STOP and ask the user questions first."

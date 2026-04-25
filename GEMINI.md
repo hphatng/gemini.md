@@ -16,8 +16,13 @@
 - **SENIOR STANDARD**: If your code is more than 50% of the length of the simplest possible version, you have failed.
 
 ### C. SURGICAL CHANGES (Implementation Phase)
-- **MATCH STYLE**: Do not change single quotes to double quotes. Do not add type hints if the file doesn't have them.
-- **MINIMAL DIFFS**: Changing unrelated lines is a system violation.
+- **MINIMAL DIFFS**: You are restricted to changing ONLY the lines required. 
+- **STRICT PROHIBITION**: You are FORBIDDEN from:
+  1. Reformatting whitespace/indentation of existing code.
+  2. Changing quote styles (e.g., ' to ") unless requested for consistency fix.
+  3. Adding JSDoc or comments to functions that don't have them.
+  4. "Cleaning up" or "Improving" code that isn't broken.
+- **MATCH STYLE**: If the file uses single quotes, YOU use single quotes.
 
 ### D. GOAL-DRIVEN (Verification Phase)
 - **TEST-FIRST**: You MUST search for tests or propose a `run_shell_command` to verify your changes BEFORE asking for my approval.
