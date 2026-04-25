@@ -1,10 +1,22 @@
-# Policy to enforce Karpathy principles
+# Policy to enforce Karpathy principles using correct Gemini CLI schema
+
 [[rule]]
-name = "prevent-overengineering"
-description = "Agent must not use complex patterns without prior discussion."
-# Use tool-based triggers for more reliable validation
-tools = ["replace", "write_file", "run_shell_command"]
-action = "REJECT"
-message = "STOP! Your current plan seems to violate the 'Simplicity First' principle. Please discuss trade-offs and list your assumptions before making any changes."
-# We use a simple prompt-based condition that the CLI can parse
-condition = "user_query_contains('complex') || user_query_contains('strategy') || user_query_contains('pattern')"
+name = "prevent-overengineering-write"
+# Trigger: Tools that create or modify files
+toolName = ["write_file", "replace"]
+# Condition: Match overengineering keywords in the tool arguments (instruction or content)
+argsPattern = ".*(complex|strategy|pattern|abstract).*"
+# Action: Deny and show message
+decision = "deny"
+priority = 900
+denyMessage = "STOP! Your current plan seems to violate the 'Simplicity First' principle by using complex patterns. Please discuss trade-offs and list your assumptions before making any changes."
+
+[[rule]]
+name = "prevent-overengineering-shell"
+# Trigger: Shell commands
+toolName = ["run_shell_command"]
+# Condition: Match keywords in the command itself
+argsPattern = ".*(complex|strategy|pattern|abstract).*"
+decision = "deny"
+priority = 900
+denyMessage = "STOP! Using complex patterns in shell commands or file creation is restricted by the 'Simplicity First' principle. Please discuss with the user first."
