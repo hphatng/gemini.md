@@ -1,22 +1,10 @@
-# Policy to enforce Karpathy principles using correct Gemini CLI schema
+# Strict enforcement policy to prevent any tool usage without clarification
 
 [[rule]]
-name = "prevent-overengineering-write"
-# Trigger: Tools that create or modify files
-toolName = ["write_file", "replace"]
-# Condition: Match overengineering keywords in the tool arguments (instruction or content)
-argsPattern = ".*(complex|strategy|pattern|abstract).*"
-# Action: Deny and show message
+name = "mandatory-clarification-before-action"
+# Trigger on all modification tools
+toolName = ["write_file", "replace", "run_shell_command"]
+# If the model has not asked a question or listed assumptions (text response), block it.
 decision = "deny"
-priority = 900
-denyMessage = "STOP! Your current plan seems to violate the 'Simplicity First' principle by using complex patterns. Please discuss trade-offs and list your assumptions before making any changes."
-
-[[rule]]
-name = "prevent-overengineering-shell"
-# Trigger: Shell commands
-toolName = ["run_shell_command"]
-# Condition: Match keywords in the command itself
-argsPattern = ".*(complex|strategy|pattern|abstract).*"
-decision = "deny"
-priority = 900
-denyMessage = "STOP! Using complex patterns in shell commands or file creation is restricted by the 'Simplicity First' principle. Please discuss with the user first."
+priority = 1000
+denyMessage = "ACCESS DENIED: You are attempting to modify the system without the mandatory 'Research & Clarification' phase. STOP and ask the user questions first."
