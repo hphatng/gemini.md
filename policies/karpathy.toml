@@ -6,5 +6,5 @@ name = "mandatory-clarification-before-action"
 toolName = ["write_file", "replace", "run_shell_command"]
 # If the model has not asked a question or listed assumptions (text response), block it.
 decision = "deny"
-priority = 1000
+priority = 999
 denyMessage = "ACCESS DENIED: You are attempting to modify the system without the mandatory 'Research & Clarification' phase. STOP and ask the user questions first."
