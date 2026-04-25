@@ -1,6 +1,6 @@
 {
   "name": "karpathy-agent-extension",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Andrej Karpathy's behavioral guidelines for expert-level AI coding.",
   "contextFileName": "GEMINI.md"
 }

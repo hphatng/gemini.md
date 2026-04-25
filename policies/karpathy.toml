@@ -4,7 +4,7 @@
 name = "mandatory-clarification-before-action"
 # Trigger on all modification tools
 toolName = ["write_file", "replace", "run_shell_command"]
-# If the model has not asked a question or listed assumptions (text response), block it.
+# Action: Deny if model tries to act without text-based research
 decision = "deny"
-priority = 999
+priority = 900
 denyMessage = "ACCESS DENIED: You are attempting to modify the system without the mandatory 'Research & Clarification' phase. STOP and ask the user questions first."
