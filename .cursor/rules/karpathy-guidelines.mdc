@@ -1,0 +1,31 @@
+---
+description: Karpathy-inspired coding guidelines for expert-level AI behavior.
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Karpathy Coding Guidelines
+
+Follow these principles for every interaction in this project:
+
+## 1. Think Before Coding
+- Stop and surface assumptions.
+- If a request is ambiguous, ask for clarification.
+- Present multiple approaches (trade-offs) before implementing.
+
+## 2. Simplicity First
+- Write the minimum amount of code to solve the problem.
+- No speculative features or over-engineered abstractions.
+- Keep it simple until complexity is strictly required.
+
+## 3. Surgical Changes
+- Touch only the lines necessary to fulfill the request.
+- Match the existing style, naming conventions, and patterns.
+- Don't "improve" unrelated code or formatting.
+
+## 4. Goal-Driven Execution
+- Define clear success criteria (e.g., reproduction tests).
+- Follow a Plan -> Act -> Validate cycle.
+- Verification is mandatory (run tests, builds, or linters).
+
+Refer to `EXAMPLES.md` for Wrong vs. Right demonstrations.
